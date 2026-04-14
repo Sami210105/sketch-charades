@@ -1,5 +1,6 @@
 import { Button } from "@/components/Button";
 import { useFonts } from "expo-font";
+import { router } from "expo-router";
 import { Image, Text, View, useWindowDimensions } from "react-native";
 import "../global.css";
 
@@ -26,9 +27,24 @@ export default function HomeScreen() {
         style={{ width: width * 1, height: height * 0.5 }}
         resizeMode="contain"
       />
-      <Button title="Join Room" color="#d59457" variant="solid" />
-      <Button title="Create Private Room" color="#d59457" variant="solid" />
-      <Button title="Enter Room Code" color="#f9edbe" variant="outline" />
+      <Button
+        title="Join Room"
+        color="#d59457"
+        variant="solid"
+        onPress={() => router.push("/nickname-avatar")}
+      />
+      <Button
+        title="Create Private Room"
+        color="#d59457"
+        variant="solid"
+        onPress={() => router.push("/create-room")}
+      />
+      <Button
+        title="Enter Room Code"
+        color="#f9edbe"
+        variant="outline"
+        onPress={() => router.push("/enter-code")}
+      />
     </View>
   );
 }
