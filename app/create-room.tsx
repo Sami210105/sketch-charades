@@ -11,12 +11,20 @@ export default function CreateRoom() {
   return (
     <View className="flex-1 items-center justify-around bg-[#0F0F0F]">
       <Options />
-      <Button
-        color="#d59457"
-        title="Create Room"
-        variant="solid"
-        onPress={() => router.push("/lobby")}
-      />
+      <View className="">
+        <Button
+          color="#f9edbe"
+          title="Invite"
+          variant="outline"
+          onPress={() => {}}
+        />
+        <Button
+          color="#d59457"
+          title="Create Room"
+          variant="solid"
+          onPress={() => router.push("/lobby")}
+        />
+      </View>
     </View>
   );
 }
