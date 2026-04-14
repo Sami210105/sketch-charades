@@ -1,9 +1,12 @@
 import { Button } from "@/components/Button";
 import { useFonts } from "expo-font";
+import { useRouter } from "expo-router";
 import { Image, Text, View, useWindowDimensions } from "react-native";
 import "../global.css";
 
 export default function HomeScreen() {
+  const router = useRouter();
+
   const [fontsLoaded] = useFonts({
     Pixel: require("../assets/fonts/PressStart2P-Regular.ttf"),
   });
@@ -22,12 +25,17 @@ export default function HomeScreen() {
       </Text>
 
       <Image
-        source={require("../assets/panda.gif")}
+        source={require("../assets/compressed_panda.gif")}
         style={{ width: width * 1, height: height * 0.5 }}
         resizeMode="contain"
       />
+      <Button
+        title="Create Private Room"
+        color="#d59457"
+        variant="solid"
+        onPress={() => router.push("/create-room")}
+      />
       <Button title="Join Room" color="#d59457" variant="solid" />
-      <Button title="Create Private Room" color="#d59457" variant="solid" />
       <Button title="Enter Room Code" color="#f9edbe" variant="outline" />
     </View>
   );
