@@ -1,12 +1,34 @@
 import { Button } from "@/components/Button";
-import { Text, View } from "react-native";
+import { useFonts } from "expo-font";
+import { Image, Text, View, useWindowDimensions } from "react-native";
 import "../global.css";
 
 export default function HomeScreen() {
+  const [fontsLoaded] = useFonts({
+    Pixel: require("../assets/fonts/PressStart2P-Regular.ttf"),
+  });
+  const { width, height } = useWindowDimensions();
+
+  if (!fontsLoaded) return null;
+
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="text-xl font-bold">Sketch Charades</Text>
-      <Button title="Start Game" onPress={() => {}} />
+    <View className="flex-1 bg-[#0F0F0F] items-center justify-center">
+      <Text className="text-[#955b38] font-pixel text-2xl font-bold">
+        {" "}
+        Sketch Charades{" "}
+      </Text>
+      <Text className="text-[#f9edbe] font-pixel text-sm -mb-10">
+        Draw.Guess.Chaos
+      </Text>
+
+      <Image
+        source={require("../assets/panda.gif")}
+        style={{ width: width * 1, height: height * 0.5 }}
+        resizeMode="contain"
+      />
+      <Button title="Join Room" color="#d59457" variant="solid" />
+      <Button title="Create Private Room" color="#d59457" variant="solid" />
+      <Button title="Enter Room Code" color="#f9edbe" variant="outline" />
     </View>
   );
 }
