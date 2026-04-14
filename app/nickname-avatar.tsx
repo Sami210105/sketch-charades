@@ -1,9 +1,11 @@
 import { Button } from "@/components/Button";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function NicknameAvatarScreen() {
   const [nickname, setNickname] = useState("");
+  const [avatarIndex, setAvatarIndex] = useState(0);
 
   const avatars = [
     require("../assets/avatar1.jpeg"),
@@ -14,7 +16,8 @@ export default function NicknameAvatarScreen() {
     require("../assets/avatar6.jpeg"),
   ];
 
-  const [avatarIndex, setAvatarIndex] = useState(0);
+  const router = useRouter();
+
   return (
     <View className="flex-1 bg-[#0F0F0F] items-center justify-center gap-4">
       <Text className="text-[#955b38] font-pixel text-2xl font-bold">
@@ -76,7 +79,9 @@ export default function NicknameAvatarScreen() {
         title="Confirm selection"
         color="#d59457"
         variant="solid"
-        onPress={() => {}}
+        onPress={() => {
+          router.push("/lobby");
+        }}
       />
     </View>
   );

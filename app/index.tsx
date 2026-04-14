@@ -1,7 +1,15 @@
 import { Button } from "@/components/Button";
 import { useFonts } from "expo-font";
 import { router } from "expo-router";
-import { Image, Text, View, useWindowDimensions } from "react-native";
+import { useState } from "react";
+import {
+  Image,
+  Modal,
+  Text,
+  TextInput,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import "../global.css";
 
 export default function HomeScreen() {
@@ -9,6 +17,8 @@ export default function HomeScreen() {
     Pixel: require("../assets/fonts/PressStart2P-Regular.ttf"),
   });
   const { width, height } = useWindowDimensions();
+  const [visible, setVisible] = useState<boolean>(false);
+  const [roomCode, setRoomCode] = useState<string>("");
 
   if (!fontsLoaded) return null;
 
@@ -28,23 +38,37 @@ export default function HomeScreen() {
         resizeMode="contain"
       />
       <Button
-        title="Join Room"
-        color="#d59457"
-        variant="solid"
-        onPress={() => router.push("/nickname-avatar")}
-      />
-      <Button
         title="Create Private Room"
         color="#d59457"
         variant="solid"
         onPress={() => router.push("/create-room")}
       />
       <Button
-        title="Enter Room Code"
-        color="#f9edbe"
-        variant="outline"
-        onPress={() => router.push("/enter-code")}
+        title="Join Room"
+        color="#d59457"
+        variant="solid"
+        onPress={() => setVisible(true)}
       />
+
+      <Modal visible={visible} transparent animationType="fade">
+        <View className="flex-1 bg-[#0f0f0f] items-center justify-center">
+          <TextInput
+            value={roomCode}
+            onChangeText={setRoomCode}
+            placeholder="Enter room code"
+          ></TextInput>
+
+          <Button
+            color="d59457"
+            title="Join Room"
+            variant="solid"
+            onPress={() => {
+              setVisible(false);
+              router.push("/nickname-avatar");
+            }}
+          ></Button>
+        </View>
+      </Modal>
     </View>
   );
 }

@@ -22,7 +22,7 @@ export default function CreateRoom() {
           color="#d59457"
           title="Create Room"
           variant="solid"
-          onPress={() => router.push("/lobby")}
+          onPress={() => router.push("/nickname-avatar")}
         />
       </View>
     </View>
