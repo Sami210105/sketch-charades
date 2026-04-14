@@ -11,9 +11,9 @@ export default function Lobby() {
     "Samu",
     "Panda",
     "Mau",
-    "Karta",
-    "Bayko",
-    "BABYDOLL",
+    "Shaun-the-sheep",
+    "Llama",
+    "Husky",
   ]);
 
   const [teamList, setTeamList] = useState<Record<string, string[]>>({

@@ -1,4 +1,5 @@
 import { Button } from "@/components/Button";
+import { avatars } from "@/constants/avatars";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -6,15 +7,6 @@ import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 export default function NicknameAvatarScreen() {
   const [nickname, setNickname] = useState("");
   const [avatarIndex, setAvatarIndex] = useState(0);
-
-  const avatars = [
-    require("../assets/avatar1.jpeg"),
-    require("../assets/avatar2.jpeg"),
-    require("../assets/avatar3.jpeg"),
-    require("../assets/avatar4.jpeg"),
-    require("../assets/avatar5.jpeg"),
-    require("../assets/avatar6.jpeg"),
-  ];
 
   const router = useRouter();
 
